@@ -2,7 +2,7 @@
 " URL:         http://github.com/kba/shinclude.vim
 " License:     MIT
 
-function! s:run(inline, comment_style)
+function! s:run(inline, comment_style) abort
     let cmd = join([
         \ 'SHLOG_TERM_COLORIZE=false',
         \ 'SHLOG_TERM=info',
@@ -11,13 +11,13 @@ function! s:run(inline, comment_style)
         \ '-c', a:comment_style,
         \ expand('%')], ' ')
     echo cmd
-    verbose exe "normal \:!" . cmd . "\<cr>"
+    verbose exe 'normal \:!' . cmd . '\<cr>'
     redraw!
 endfunction
 
-function! shinclude#run()
+function! shinclude#run() abort
     if &modified
-        echo "Please save first"
+        echo 'Please save first'
         return
     endif
     if &filetype == 'markdown'
