@@ -25,6 +25,8 @@ function! shinclude#run() abort
     endif
     if &filetype == 'markdown'
         call s:run('xml')
+    elseif &filetype == 'html'
+        call s:run('xml')
     elseif &filetype == 'vim'
         call s:run('vim')
     elseif &filetype == 'make'
